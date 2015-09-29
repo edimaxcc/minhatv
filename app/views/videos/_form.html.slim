@@ -1,28 +1,24 @@
 = form_for(@video) do |f|
-  - if @video.errors.any?
-    #error_explanation
-      h2
-       = pluralize(@video.errors.count, "error")
-        prohibited this video from being saved:
-      ul
-       - @video.errors.full_messages.each do |message|
-          li= message
-  .field
-    = f.label :title
-    br
-      = f.text_field :title
-  .field
-    = f.label :description
-    br
-      = f.text_field :description
-  .field
-    = f.label :views
-    br
-      = f.number_field :views
-  .field
-    = f.label :duration
-    br
-      = f.time_select :duration
-  .actions
-    .btn.btn-info
-      = f.submit
+   - if @video.errors.any?
+      #error_explanation
+        h2
+         = pluralize(@video.errors.count, "error")
+          prohibited this video from being saved:
+        ul
+         - @video.errors.full_messages.each do |message|
+            li= message
+   .field
+     = f.label :title
+   br
+     = f.text_field :title, class: 'form-control'  
+   .field
+     = f.label :description
+     
+     = f.text_field :description, class: 'form-control'
+   br
+   .field
+     = f.label :duration
+     = f.time_select :duration, class: 'form-control'
+   br
+   .btn.btn-primary
+     = f.submit

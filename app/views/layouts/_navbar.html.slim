@@ -1,0 +1,39 @@
+nav.navbar.navbar-inverse.navbar-fixed-top role="navigation"
+  .container
+    .navbar-header
+      button.navbar-toggle.collapsed type="button" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"
+        span.sr-only
+          | Toggle navigation
+        span.icon-bar
+        span.icon-bar
+        span.icon-bar
+      = link_to "MinhaTV", "/", class: "navbar-brand"
+    #navbar.collapse.navbar-collapse
+      ul.nav.navbar-nav
+        li.active
+          a href="/"
+            | Home
+        li
+          a href="#about"
+            | Videos
+        li
+          a href="#contact"
+            | Playlist
+
+            
+      ul.nav.navbar-nav.navbar-right 
+        li = link_to new_user_session_path
+          - if current_user
+             span
+              | Perfil
+          - else 
+             span
+              | Login
+        - if current_user
+          li = link_to destroy_user_session_path, method: :delete
+            span
+             | Sing Out
+        - else     
+           li = link_to new_user_registration_path
+             span 
+              | SingUp   
